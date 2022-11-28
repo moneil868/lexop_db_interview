@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: lexop_interview_development
+
+test:
+  <<: *default
+  database: lexop_interview_test
+
+production:
+  <<: *default
+  database: lexop_interview_production
+  username: lexop_interview
+  password: <%= ENV["LEXOP_INTERVIEW_DATABASE_PASSWORD"] %>
