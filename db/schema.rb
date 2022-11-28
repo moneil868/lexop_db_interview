@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_140110) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_152528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,4 +26,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_140110) do
     t.index ["title", "author", "category"], name: "index_articles_on_title_and_author_and_category", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.date "date"
+    t.integer "count", default: 0
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_likes_on_article_id"
+  end
+
+  add_foreign_key "likes", "articles"
 end
