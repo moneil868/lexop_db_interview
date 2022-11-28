@@ -16,6 +16,18 @@ HTML)
 containing manually unzipped news_app_data.zip files (e.g. /data/news_articles.csv and corresponding HTML files like /data
 /montreal_hawks_minor_league_baseball_team_wins_championship.html ). Assume /data/news_articles.csv is always
 well-formed (contains all attribute values and no repeated unique titles) and is always accompanied by all news article HTML files.
+- The solution must consist of Rails route(s), Rails controller(s), ERB view(s), ActiveRecord-model(s), ActiveRecord-migration(s), and optionally
+extra Ruby classes/modules. You may design software layers and the database any way you deem fit. Rails Scaffolding is acceptable.
+news_app_data.zip must be manually unzipped in /data directory relative to the project root, and then afterwards processed with rake
+task (rake import:news_articles) to import into the database. It is OK to submit /data directory along with project files.
+- The news article model must validate that the title is unique, and that the title, body, author, publication_date, and category are present. Also,
+if your model layer includes other models, ensure they have validations that ensure data integrity as well.
+- The rake task (rake import:news_articles) must be idempotent.
+- All backend code except the rake task must be covered by automated tests (i.e. models and controllers). RSpec, MiniTest, or any other
+testing library is acceptable.
+
+### Testing
+- Models and Controller tests must be included
 
 ### System Requirements
 - Ruby version 2.7+
@@ -56,10 +68,6 @@ That translates to the following news article meta-data:
 
 #### Limitations
 - Database is PostgreSQL instead of SQLite
-- Users are not able to update article field using data import, except `count`.
+- Users are not able to update article field using data import
 - Users are not able to delete articles using the data import.
-
-### Testing
-- Models and Controller tests must be included
-
 
