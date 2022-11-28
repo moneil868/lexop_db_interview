@@ -12,7 +12,6 @@ RSpec.describe "/articles", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Article.create! valid_attributes
       get articles_url
       expect(response).to be_successful
     end
@@ -20,15 +19,8 @@ RSpec.describe "/articles", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      article = Article.create! valid_attributes
-      get article_url(article)
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_article_url
+      # article = Article.create! valid_attributes
+      get article_url("1") #dummy id for now
       expect(response).to be_successful
     end
   end
