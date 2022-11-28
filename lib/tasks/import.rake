@@ -21,7 +21,8 @@ namespace :import do
 
       converted.each do |c_date|
         date = article.likes.find_or_create_by! date: c_date[:date]
-        date.increase_count(c_date[:count])
+        # date.increase_likes(conv_date[:likes]) <- could have been used to allow the user to update count
+        date.update_attribute(:count, c_date[:count])
       end
 
       puts
