@@ -1,0 +1,71 @@
+<aside class="filters">
+  <h2 class="sr-only">Filters Sidebar</h2>
+  <%= form_with url: articles_path, method: :get, class: "space-y-10" do |form| %>
+    <fieldset>
+      <legend class="block text-sm font-medium text-gray-900">
+        Category
+      </legend>
+      <div class="space-y-3 pt-6" data-url-target="categories">
+        <div class="flex items-center">
+          <%= form.check_box :categories, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, '1', nil %>
+          <%= form.label "categories_1", 'Category 1', class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :categories, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, '2', nil %>
+          <%= form.label "categories_2", 'Category 2', class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :categories, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, '3', nil %>
+          <%= form.label "categories_3", 'Category 3', class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :categories, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, '4', nil %>
+          <%= form.label "categories_4", 'Category 4', class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :categories, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, '5', nil %>
+          <%= form.label "categories_5", 'Category 5', class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend class="block text-sm font-medium text-gray-900">Author</legend>
+      <div class="space-y-3 pt-6" data-url-target="authors">
+        <div class="flex items-center">
+          <%= form.check_box :authors, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, "1", nil %>
+          <%= form.label "authors_1", "Author 1", class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :authors, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, "2", nil %>
+          <%= form.label "authors_2", "Author 2", class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :authors, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, "3", nil %>
+          <%= form.label "authors_3", "Author 3", class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :authors, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, "4", nil %>
+          <%= form.label "authors_4", "Author 4", class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+
+        <div class="flex items-center">
+          <%= form.check_box :authors, { multiple: true, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer" }, "5", nil %>
+          <%= form.label "authors_5", "Author 5", class: "ml-3 text-sm text-gray-600 cursor-pointer" %>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="mt-4 flex-none">
+      <button type="submit" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Filter</button>
+    </div>
+  <% end %>
+</aside>
