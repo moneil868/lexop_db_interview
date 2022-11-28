@@ -3,7 +3,6 @@ class Like < ApplicationRecord
 
   validates :date, presence: true
 
-
   def increase_count(num)
     self.count += num
     self.save!

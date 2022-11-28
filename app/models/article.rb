@@ -10,4 +10,8 @@ class Article < ApplicationRecord
   def total_likes
     likes.pluck(:count).sum
   end
+  
+  def max_count_to_nearest_1000
+    (highest_like_count_day.ceil -2).to_f
+  end
 end

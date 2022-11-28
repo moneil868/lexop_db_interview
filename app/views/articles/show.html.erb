@@ -48,7 +48,7 @@
                 <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
               </svg>
               <p class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" aria-current="page">
-                Montreal Hawks Minor League Baseball Team Wins Championship
+                <%= @article.title %>
               </p>
             </div>
           </li>
@@ -57,10 +57,10 @@
 
       <h1 class="mt-24 mb-12 max-auto max-w-2xl text-center">
         <span class="block text-lg font-semibold text-indigo-600">
-          Sports
+          <%= @article.category %>
         </span>
         <span class="mt-2 block text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-          Montreal Hawks Minor League Baseball Team Wins Championship
+          <%= @article.title %>
         </span>
       </h1>
 
@@ -68,13 +68,13 @@
         <p>
           Published on 
           <span class="font-bold">
-            Wed 17, Oct 2029
+            <%= @article.publication_date.strftime("%a %d, %b %Y") %>
           </span>
         </p>
         <p class="mt-1">
           By 
           <span class="font-bold">
-            Aaron Bishop
+            <%= @article.author %>
           </span>
         </p>
       </div>
@@ -82,7 +82,7 @@
     </div>
 
     <div class="prose prose-lg prose-indigo mx-auto mt-6 text-gray-500">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <%= simple_format @file_content %>
     </div>
 
     <div class="prose prose-lg prose-indigo mx-auto mt-12">
@@ -94,87 +94,30 @@
                 Article Statistics
               </p>
               <p>
-                Total Likes: 9999
+                Total Likes: <%= @article.total_likes %>
               </p>
             </div>
-            <div class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white sm:p-8">
-              <h2 class="text-xl font-bold">
-                Last 7 Days
-              </h2>
-              <div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3 h-80">
 
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 18%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    123
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Oct, 20
-                  </span>
+            <% unless @likes.empty? %>
+              <div class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white sm:p-8">
+                <h2 class="text-xl font-bold">
+                  Last <%= @likes.count %> Days
+                </h2>
+                <div class="flex items-end flex-grow w-full mt-6 space-x-2 sm:space-x-3 h-80">
+                  <% @likes.each do |data| %>
+                    <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: <%= ((data.count / @article.max_count_to_nearest_1000) * 100).round %>%">
+                      <span class="absolute top-0 -mt-6 text-xs font-bold">
+                        <%= data.count %>
+                      </span>
+                      <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
+                      <span class="absolute bottom-0 text-xs font-bold">
+                          <%= data.date.strftime("%b, %e") %>
+                      </span>
+                    </div>
+                  <% end %>
                 </div>
-
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 43%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    512
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Nov, 1
-                  </span>
-                </div>
-
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 20%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    150
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Nov, 12
-                  </span>
-                </div>
-
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 37%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    400
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Nov, 13
-                  </span>
-                </div>
-
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 60%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    650
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Nov, 23
-                  </span>
-                </div>
-
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 70%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    800
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Nov, 30
-                  </span>
-                </div>
-
-                <div class="relative flex flex-col items-center justify-end flex-grow pb-5 group h-full" style="height: 65%">
-                  <span class="absolute top-0 -mt-6 text-xs font-bold">
-                    655
-                  </span>
-                  <div class="relative flex justify-center w-full h-full bg-indigo-400"></div>
-                  <span class="absolute bottom-0 text-xs font-bold">
-                      Dec, 1
-                  </span>
-                </div>
-
               </div>
-            </div>
+            <% end %>
           </div>
 
         </div>
